@@ -77,7 +77,7 @@ function SideDrawer() {
                 },
             };
 
-            const { data } = await axios.get(`http://16.170.202.219:3001/api/user?search=${search}`, config);
+            const { data } = await axios.get(`https://16.170.202.219/api/user?search=${search}`, config);
 
             setLoading(false);
             setSearchResult(data);
@@ -105,7 +105,7 @@ function SideDrawer() {
                     Authorization: `Bearer ${user.token}`,
                 },
             };
-            const { data } = await axios.post(`http://16.170.202.219:3001/api/chat`, { userId }, config);
+            const { data } = await axios.post(`https://16.170.202.219/api/chat`, { userId }, config);
 
             if (!chats.find((c) => c._id === data._id)) setChats([data, ...chats]);
             setSelectedChat(data);

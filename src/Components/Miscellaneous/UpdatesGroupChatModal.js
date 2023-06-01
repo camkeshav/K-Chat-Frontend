@@ -46,7 +46,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
                     Authorization: `Bearer ${user.token}`,
                 },
             };
-            const { data } = await axios.get(`http://16.170.202.219:3001/api/user?search=${search}`, config);
+            const { data } = await axios.get(`https://16.170.202.219/api/user?search=${search}`, config);
             console.log(data);
             setLoading(false);
             setSearchResult(data);

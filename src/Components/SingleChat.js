@@ -15,7 +15,7 @@ import animationData from "../Animations/typing.json";
 import io from "socket.io-client";
 import UpdateGroupChatModal from "./Miscellaneous/UpdatesGroupChatModal";
 import { ChatState } from "../Context/ChatProvider";
-const ENDPOINT = "http://16.170.202.219:3001";
+const ENDPOINT = "https://16.170.202.219";
 var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
@@ -51,7 +51,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             setLoading(true);
 
             const { data } = await axios.get(
-                `http://16.170.202.219:3001/api/message/${selectedChat._id}`,
+                `https://16.170.202.219/api/message/${selectedChat._id}`,
                 config
             );
             setMessages(data);
@@ -82,7 +82,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                 };
                 setNewMessage("");
                 const { data } = await axios.post(
-                    "http://16.170.202.219:3001/api/message",
+                    "https://16.170.202.219/api/message",
                     {
                         content: newMessage,
                         chatId: selectedChat,
