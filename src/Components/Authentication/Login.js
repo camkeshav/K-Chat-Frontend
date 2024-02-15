@@ -40,7 +40,7 @@ const Login = () => {
             };
 
             const { data } = await axios.post(
-                "https://16.170.202.219/api/user/login",
+                "https://13.53.131.123:3443/api/user/login",
                 { email, password },
                 config
             );

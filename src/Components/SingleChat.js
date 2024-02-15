@@ -15,7 +15,7 @@ import animationData from "../Animations/typing.json";
 import io from "socket.io-client";
 import UpdateGroupChatModal from "./Miscellaneous/UpdatesGroupChatModal";
 import { ChatState } from "../Context/ChatProvider";
-const ENDPOINT = "https://16.170.202.219";
+const ENDPOINT = "https://13.53.131.123:3443";
 var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
@@ -51,7 +51,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             setLoading(true);
 
             const { data } = await axios.get(
-                `https://16.170.202.219/api/message/${selectedChat._id}`,
+                `https://13.53.131.123:3443/api/message/${selectedChat._id}`,
                 config
             );
             setMessages(data);
@@ -82,7 +82,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                 };
                 setNewMessage("");
                 const { data } = await axios.post(
-                    "https://16.170.202.219/api/message",
+                    "https://13.53.131.123:3443/api/message",
                     {
                         content: newMessage,
                         chatId: selectedChat,
@@ -198,10 +198,15 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                         d="flex"
                         flexDir="column"
                         justifyContent="flex-end"
+                        style={{
+                            display: "flex",
+                            justifyContent: "flex-end",
+                            flexDirection: "column"
+                        }}
                         p={3}
                         bg="#E8E8E8"
                         w="100%"
-                        h="100%"
+                        h="60vh"
                         borderRadius="lg"
                         overflowY="hidden"
                     >
@@ -244,6 +249,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                                 value={newMessage}
                                 onChange={typingHandler}
                             />
+
                         </FormControl>
                     </Box>
                 </>
