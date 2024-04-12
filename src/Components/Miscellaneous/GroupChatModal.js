@@ -58,7 +58,7 @@ const GroupChatModal = ({ children }) => {
                     Authorization: `Bearer ${user.token}`,
                 },
             };
-            const { data } = await axios.get(`https://13.53.131.123:3443/api/user?search=${search}`, config);
+            const { data } = await axios.get(`https://51.20.55.149:3443/api/user?search=${search}`, config);
             console.log(data);
             setLoading(false);
             setSearchResult(data);
@@ -97,7 +97,7 @@ const GroupChatModal = ({ children }) => {
                 },
             };
             const { data } = await axios.post(
-                `https://13.53.131.123:3443/api/chat/group`,
+                `https://51.20.55.149:3443/api/chat/group`,
                 {
                     name: groupChatName,
                     users: JSON.stringify(selectedUsers.map((u) => u._id)),

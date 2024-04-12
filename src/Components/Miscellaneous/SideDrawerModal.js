@@ -77,7 +77,7 @@ function SideDrawer() {
                 },
             };
 
-            const { data } = await axios.get(`https://13.53.131.123:3443/api/user?search=${search}`, config);
+            const { data } = await axios.get(`https://51.20.55.149:3443/api/user?search=${search}`, config);
 
             setLoading(false);
             setSearchResult(data);
@@ -105,7 +105,7 @@ function SideDrawer() {
                     Authorization: `Bearer ${user.token}`,
                 },
             };
-            const { data } = await axios.post(`https://13.53.131.123:3443/api/chat`, { userId }, config);
+            const { data } = await axios.post(`https://51.20.55.149:3443/api/chat`, { userId }, config);
 
             if (!chats.find((c) => c._id === data._id)) setChats([data, ...chats]);
             setSelectedChat(data);

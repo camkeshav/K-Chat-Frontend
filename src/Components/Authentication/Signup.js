@@ -1,10 +1,10 @@
 import { Button } from "@chakra-ui/button";
-import { FormControl, FormLabel } from "@chakra-ui/form-control";
+import { FormControl, FormLabel, FormHelperText } from "@chakra-ui/form-control";
 import { Input, InputGroup, InputRightElement } from "@chakra-ui/input";
 import { VStack } from "@chakra-ui/layout";
 import { useToast } from "@chakra-ui/toast";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 
 const Signup = () => {
@@ -19,6 +19,16 @@ const Signup = () => {
     const [password, setPassword] = useState();
     const [profilePicture, setPic] = useState();
     const [picLoading, setPicLoading] = useState(false);
+    const regex = new RegExp("b[0-9]+@skit\.ac\.in")
+    const [error, setError] = useState(false)
+
+    const handleEmailCheck = ()=>{
+        setError(regex.test(email))
+    }
+
+    useEffect(()=>{
+    handleEmailCheck()
+    },[email])
 
     const submitHandler = async () => {
         setPicLoading(true);
@@ -51,7 +61,7 @@ const Signup = () => {
                 },
             };
             const { data } = await axios.post(
-                "https://13.53.131.123:3443/api/user",
+                "https://51.20.55.149:3443/api/user",
                 {
                     name,
                     email,
@@ -142,9 +152,22 @@ const Signup = () => {
                 <FormLabel>Email Address</FormLabel>
                 <Input
                     type="email"
-                    placeholder="Enter Your Email Address"
-                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter SKIT Domain Email"
+                    isInvalid={!error}
+                    title="Enter a valid SKIT Domain ID"
+                    onChange={(e) => {
+                        setEmail(e.target.value)
+                    }}
                 />
+                {!error ? ( 
+                    <FormHelperText> 
+                        Enter a valid SKIT Domain ID
+                    </FormHelperText>
+                ) : ( 
+                    <FormHelperText> 
+                        You are good to go... 
+                    </FormHelperText> 
+                )} 
             </FormControl>
             <FormControl id="password" isRequired>
                 <FormLabel>Password</FormLabel>
@@ -191,6 +214,7 @@ const Signup = () => {
                 style={{ marginTop: 15 }}
                 onClick={submitHandler}
                 isLoading={picLoading}
+                isDisabled={!error}
             >
                 Sign Up
             </Button>
