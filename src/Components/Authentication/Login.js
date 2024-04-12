@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useToast } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
+import { HTMLToJSON } from 'html-to-json-parser';
 
 const Login = () => {
     const [show, setShow] = useState(false);
@@ -14,7 +15,7 @@ const Login = () => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [loading, setLoading] = useState(false);
-    const regex = new RegExp("b[0-9]+@skit\.ac\.in")
+    const regex = new RegExp("[B b][0-9]+@skit\.ac\.in")
     const [error, setError] = useState(false)
 
     const handleEmailCheck = ()=>{
@@ -67,7 +68,7 @@ const Login = () => {
             history.push("/chats");
         } catch (error) {
             toast({
-                title: "Error Occured!",
+                title: "Login error",
                 description: error.response.data.message,
                 status: "error",
                 duration: 5000,
