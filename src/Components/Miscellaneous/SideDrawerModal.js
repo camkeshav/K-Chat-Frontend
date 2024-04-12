@@ -10,6 +10,15 @@ import {
     MenuList,
 } from "@chakra-ui/menu";
 import {
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalFooter,
+    ModalBody,
+    ModalCloseButton,
+  } from '@chakra-ui/react'
+import {
     Drawer,
     DrawerBody,
     DrawerContent,
@@ -17,7 +26,7 @@ import {
     DrawerOverlay,
 } from "@chakra-ui/modal";
 import { Tooltip } from "@chakra-ui/tooltip";
-import { BellIcon, ChevronDownIcon, SearchIcon } from "@chakra-ui/icons";
+import { BellIcon, ChevronDownIcon, SearchIcon, UpDownIcon } from "@chakra-ui/icons";
 import { Avatar } from "@chakra-ui/avatar";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
@@ -31,6 +40,7 @@ import { Effect } from "react-notification-badge";
 import { getSender } from "../../config/ChatLogics";
 import UserListItem from "../userAvatar/UserListItem";
 import { ChatState } from "../../Context/ChatProvider";
+import GameModal from "./GameModal";
 
 function SideDrawer() {
     const [search, setSearch] = useState("");
@@ -153,6 +163,14 @@ function SideDrawer() {
                     K-CHAT Online
                 </Text>
                 <div>
+                    <Menu>
+                        <MenuButton as={Button}>
+                        <UpDownIcon/>
+                        </MenuButton>
+                        <MenuList>
+                            <GameModal/>
+                        </MenuList>
+                    </Menu>
                     <Menu>
                         <MenuButton p={1}>
                             <NotificationBadge

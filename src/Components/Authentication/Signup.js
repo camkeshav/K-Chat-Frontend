@@ -19,7 +19,7 @@ const Signup = () => {
     const [password, setPassword] = useState();
     const [profilePicture, setPic] = useState();
     const [picLoading, setPicLoading] = useState(false);
-    const regex = new RegExp("b[0-9]+@skit\.ac\.in")
+    const regex = new RegExp("[B b][0-9]+@skit\.ac\.in")
     const [error, setError] = useState(false)
 
     const handleEmailCheck = ()=>{

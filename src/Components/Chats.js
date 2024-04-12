@@ -21,6 +21,7 @@ const Chatpage = () => {
                 paddingBottom="80px" // Adjusted padding to accommodate the SideDrawer
                 boxSizing="border-box"
             >
+                {/* <iframe frameborder="0" src="https://itch.io/embed/2638442" width="552" height="167"><a href="https://chris766x.itch.io/puchu">puchu by Chris766X</a></iframe> */}
                 {user && (
                     <MyChats
                         fetchAgain={fetchAgain}
