@@ -46,7 +46,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
                     Authorization: `Bearer ${user.token}`,
                 },
             };
-            const { data } = await axios.get(`https://51.20.55.149:3443/api/user?search=${search}`, config);
+            const { data } = await axios.get(`https://13.48.44.200:3443/api/user?search=${search}`, config);
             console.log(data);
             setLoading(false);
             setSearchResult(data);
@@ -74,7 +74,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
                 },
             };
             const { data } = await axios.put(
-                `https://51.20.55.149:3443/api/chat/rename`,
+                `https://13.48.44.200:3443/api/chat/rename`,
                 {
                     chatId: selectedChat._id,
                     chatName: groupChatName,
@@ -133,7 +133,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
                 },
             };
             const { data } = await axios.put(
-                `https://51.20.55.149:3443/api/chat/groupadd`,
+                `https://13.48.44.200:3443/api/chat/groupadd`,
                 {
                     chatId: selectedChat._id,
                     userId: user1._id,
@@ -181,7 +181,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
                 },
             };
             const { data } = await axios.put(
-                `https://51.20.55.149:3443/api/chat/groupremove`,
+                `https://13.48.44.200:3443/api/chat/groupremove`,
                 {
                     chatId: selectedChat._id,
                     userId: user1._id,
