@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useToast } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
+
 import { HTMLToJSON } from 'html-to-json-parser';
 
 const Login = () => {
